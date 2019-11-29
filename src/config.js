@@ -195,7 +195,7 @@ export const cats = [
 
 export const teams = [
     {
-        title: 'blue team',
+        title: 'orange team',
         points: 0,
     },
     {

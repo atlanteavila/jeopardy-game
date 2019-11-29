@@ -45,25 +45,23 @@ function App() {
     pointsValue: 0,
     teamScores: teams.map((team) => team.points)
   })
-  const openDialog = (q) => {
-    const obj = Object.assign({...state}, {cats}, {open: true, question: q})
-    setState(obj)
-  }
   const handleCloseDialog = (i) => {
     setState({...state, open: false})
   }
   const handleSelectQuestion = (i, j, pointsValue, q) => {
     const newCats = Object.assign({}, cats);
-    const obj = Object.assign({...state}, {cats}, {open: true, question: q})
+    const obj = Object.assign({...state}, {cats}, {open: true, question: q});
     newCats[i].questions[j].valid = false;
     const newState = {
       ...state,
       cats: newCats,
       pointsValue: pointsValue,
     }
-    const final = Object.assign({}, newState, newCats, obj)
+
+    const final = Object.assign({}, newState, newCats, obj, {pointsValue})
     setState(final)
   }
+
   const setScores = (score, i) => {
     const newScores = state.teamScores;
     newScores[i] = newScores[i] + score;
@@ -117,7 +115,6 @@ function App() {
                     return <Paper onClick={() => {
                       if (q.valid) {
                         handleSelectQuestion(i, j, values[j], q);
-                        // openDialog(q);
                       }
                     }} className={classes.paperAnswer} question="question" key={j}>{q.valid ? values[j] : 'played'}</Paper>
                   })}
