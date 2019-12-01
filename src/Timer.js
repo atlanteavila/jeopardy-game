@@ -29,7 +29,7 @@ export default function LinearDeterminate() {
         setPlaySoundStatus(false);
         return clearInterval(timer)
       }
-      if (goal - completed === 19) {
+      if (goal - completed === 7) {
         setPlaySoundStatus(playStatus[0]);
       }
       const inc = completed + 1;
