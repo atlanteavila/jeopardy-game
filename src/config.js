@@ -207,3 +207,5 @@ export const teams = [
         points: 0,
     },
 ]
+
+export const values = [200, 400, 600, 800, 1000]

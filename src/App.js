@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { cats, teams } from './config';
-import DraggableDialog from './Dialog';
+import { cats, teams, values } from './config';
+import ClueBoard from './ClueBoard';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -13,18 +13,6 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     background: 'blue',
     borderRadius: 0,
-    border: '1px solid yellow',
-    color: 'white',
-    fontWeight: 'bold',
-    minHeight: 46,
-    fontSize: 20,
-  },
-  paperAnswer: {
-    padding: theme.spacing(3),
-    textAlign: 'center',
-    background: 'blue',
-    borderRadius: 0,
-    border: '1px solid yellow',
     color: 'yellow',
     fontWeight: 'bold',
     minHeight: 55,
@@ -32,10 +20,9 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: 10
   },
 }));
-
-const values = [200, 400, 600, 800, 1000]
 
 function App() {
   const [state, setState] = useState({
@@ -73,7 +60,7 @@ function App() {
 
   const classes = useStyles();
   return (
-    <div style={{ height: '100vh', background: 'black' }} className="App">
+    <div style={{ height: '100vh', background: 'black', overflow: 'hidden' }} className="App">
       <div style={{
         width: '15vw',
         height: '100vh',
@@ -116,13 +103,14 @@ function App() {
                       if (q.valid) {
                         handleSelectQuestion(i, j, values[j], q);
                       }
-                    }} className={classes.paperAnswer} question="question" key={j}>{q.valid ? values[j] : 'played'}</Paper>
+                    }} className={classes.paper} question="question" key={j}>{q.valid ? values[j] : 'played'}</Paper>
                   })}
                 </Grid>
               )
             })
           }
-          <DraggableDialog state={state.open} handleClose={handleCloseDialog} q={state.question} pointsValue={state.pointsValue} setScores={setScores}/>
+          <ClueBoard state={state.open} handleClose={handleCloseDialog} q={state.question} pointsValue={state.pointsValue} setScores={setScores} />
+          {/* <DraggableDialog state={state.open} handleClose={handleCloseDialog} q={state.question} pointsValue={state.pointsValue} setScores={setScores} /> */}
         </Grid>
       </div>
     </div>
