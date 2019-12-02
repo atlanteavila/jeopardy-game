@@ -206,6 +206,10 @@ export const teams = [
         title: 'green team',
         points: 0,
     },
+    {
+        title: 'teal team',
+        points: 0,
+    },
 ]
 
 export const values = [200, 400, 600, 800, 1000]

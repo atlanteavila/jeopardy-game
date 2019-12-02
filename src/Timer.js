@@ -26,10 +26,10 @@ export default function LinearDeterminate() {
 
     const timer = setInterval(function () {
       if (completed === goal) {
-        setPlaySoundStatus(false);
+        setPlaySoundStatus(playStatus[1]);
         return clearInterval(timer)
       }
-      if (goal - completed === 7) {
+      if (goal - completed === 8) {
         setPlaySoundStatus(playStatus[0]);
       }
       const inc = completed + 1;

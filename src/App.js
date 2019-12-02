@@ -12,7 +12,6 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(3),
     textAlign: 'center',
     background: 'blue',
-    borderRadius: 0,
     color: 'yellow',
     fontWeight: 'bold',
     minHeight: 55,
@@ -20,7 +19,8 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 10
+    marginBottom: 10,
+    borderRadius: 7
   },
 }));
 
@@ -99,7 +99,7 @@ function App() {
                     {cat.meta.title}
                   </Paper>
                   {cat.questions.map((q, j) => {
-                    return <Paper onClick={() => {
+                    return <Paper style={{fontSize: 40, cursor: 'pointer'}} onClick={() => {
                       if (q.valid) {
                         handleSelectQuestion(i, j, values[j], q);
                       }
